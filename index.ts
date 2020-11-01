@@ -1,10 +1,9 @@
-import express from 'express';
+import express from 'express'
 
+const app = express()
 
-const app = express();
-
-const PORT = 8000;
-app.get('/', (req, res) => res.send('Welcome to Carthage - A GraphQL FHIR Architecture.'));
+const PORT = 8000
+app.get('/', (req, res) => res.send('Welcome to Carthage - A GraphQL FHIR Architecture.'))
 app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
-});
+  console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`)
+})
