@@ -1,0 +1,9 @@
+{
+  "name": "carthage",
+  "version": "0.0.1",
+  "description": "GraphQl FHIR Architecture",
+  "main": "index.js",
+  "repository": "https://github.com/inception-labs/carthage",
+  "author": "Melek <1846037+meleksomai@users.noreply.github.com>",
+  "license": "MIT"
+}
