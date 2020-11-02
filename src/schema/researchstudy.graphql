@@ -1,0 +1,214 @@
+# FHIR GraphQL Schema. Version 4.5.0
+
+# import the types from 'types.graphql'
+
+type ResearchStudy {
+  id: ID
+  meta: Meta
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: Narrative
+  contained: [Resource]
+  extension: [Extension]
+  modifierExtension: [Extension]
+  identifier: [Identifier]
+  title: String  _title: ElementBase
+  protocol: [Reference]
+  partOf: [Reference]
+  status: code  _status: ElementBase
+  primaryPurposeType: CodeableConcept
+  phase: CodeableConcept
+  category: [CodeableConcept]
+  focus: [CodeableConcept]
+  condition: [CodeableConcept]
+  contact: [ContactDetail]
+  relatedArtifact: [RelatedArtifact]
+  keyword: [CodeableConcept]
+  location: [CodeableConcept]
+  description: markdown  _description: ElementBase
+  enrollment: [Reference]
+  period: Period
+  sponsor: Reference
+  principalInvestigator: Reference
+  site: [Reference]
+  reasonStopped: CodeableConcept
+  note: [Annotation]
+  arm: [ResearchStudyArm]
+  objective: [ResearchStudyObjective]
+}
+
+type ResearchStudyArm {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  name: String  _name: ElementBase
+  type: CodeableConcept
+  description: String  _description: ElementBase
+}
+
+type ResearchStudyObjective {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  name: String  _name: ElementBase
+  type: CodeableConcept
+}
+
+input ResearchStudyInput {
+  id: ID
+  meta: MetaInput
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  title: String  _title: ElementBase
+  protocol: [ReferenceInput]
+  partOf: [ReferenceInput]
+  status: code  _status: ElementBase
+  primaryPurposeType: CodeableConceptInput
+  phase: CodeableConceptInput
+  category: [CodeableConceptInput]
+  focus: [CodeableConceptInput]
+  condition: [CodeableConceptInput]
+  contact: [ContactDetailInput]
+  relatedArtifact: [RelatedArtifactInput]
+  keyword: [CodeableConceptInput]
+  location: [CodeableConceptInput]
+  description: markdown  _description: ElementBase
+  enrollment: [ReferenceInput]
+  period: PeriodInput
+  sponsor: ReferenceInput
+  principalInvestigator: ReferenceInput
+  site: [ReferenceInput]
+  reasonStopped: CodeableConceptInput
+  note: [AnnotationInput]
+  arm: [ResearchStudyArmInput]
+  objective: [ResearchStudyObjectiveInput]
+}
+
+input ResearchStudyArmInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  name: String  _name: ElementBase
+  type: CodeableConceptInput
+  description: String  _description: ElementBase
+}
+
+input ResearchStudyObjectiveInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  name: String  _name: ElementBase
+  type: CodeableConceptInput
+}
+
+type ResearchStudyReadType {
+  ResearchStudy(id: ID!): ResearchStudy
+}
+
+type ResearchStudyListType {
+  ResearchStudyList(_filter: String
+    category: [token]
+    date: [date]
+    focus: [token]
+    identifier: [token]
+    keyword: [token]
+    location: [token]
+    partof: [reference]
+    principalinvestigator: [reference]
+    protocol: [reference]
+    site: [reference]
+    sponsor: [reference]
+    status: [token]
+    title: [String]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [ResearchStudy]
+}
+
+type ResearchStudyConnectionType {
+  ResearchStudyConection(_filter: String
+    category: [token]
+    date: [date]
+    focus: [token]
+    identifier: [token]
+    keyword: [token]
+    location: [token]
+    partof: [reference]
+    principalinvestigator: [reference]
+    protocol: [reference]
+    site: [reference]
+    sponsor: [reference]
+    status: [token]
+    title: [String]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): ResearchStudyConnection
+}
+
+type ResearchStudyConnection {
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [ResearchStudyEdge]
+}
+
+type ResearchStudyEdge {
+  mode: String
+  score: Float
+  resource: ResearchStudy
+}
+
+type ResearchStudyCreateType {
+  ResearchStudyCreate(resource: ResearchStudyInput): ResearchStudyCreation
+}
+
+type ResearchStudyCreation {
+  location: String
+  resource: ResearchStudy
+  information: OperationOutcome
+}
+
+type ResearchStudyUpdateType {
+  ResearchStudyUpdate(id: ID, resource: ResearchStudyInput): ResearchStudyUpdate
+}
+
+type ResearchStudyUpdate {
+  resource: ResearchStudy
+  information: OperationOutcome
+}
+
+type ResearchStudyDeleteType {
+  ResearchStudyDelete(id: ID): ResearchStudyDelete
+}
+
+type ResearchStudyDelete {
+  information: OperationOutcome
+}
+

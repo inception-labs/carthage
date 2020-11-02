@@ -1,0 +1,254 @@
+# FHIR GraphQL Schema. Version 4.5.0
+
+# import the types from 'types.graphql'
+
+type MeasureReport {
+  id: ID
+  meta: Meta
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: Narrative
+  contained: [Resource]
+  extension: [Extension]
+  modifierExtension: [Extension]
+  identifier: [Identifier]
+  status: code  _status: ElementBase
+  type: code  _type: ElementBase
+  measure: canonical  _measure: ElementBase
+  subject: Reference
+  date: dateTime  _date: ElementBase
+  reporter: Reference
+  period: Period!
+  improvementNotation: CodeableConcept
+  group: [MeasureReportGroup]
+  evaluatedResource: [Reference]
+}
+
+type MeasureReportGroup {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  code: CodeableConcept
+  population: [MeasureReportGroupPopulation]
+  measureScore: Quantity
+  stratifier: [MeasureReportGroupStratifier]
+}
+
+type MeasureReportGroupPopulation {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  code: CodeableConcept
+  count: Int  _count: ElementBase
+  subjectResults: Reference
+}
+
+type MeasureReportGroupStratifier {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  code: [CodeableConcept]
+  stratum: [MeasureReportGroupStratifierStratum]
+}
+
+type MeasureReportGroupStratifierStratum {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  value: CodeableConcept
+  component: [MeasureReportGroupStratifierStratumComponent]
+  population: [MeasureReportGroupStratifierStratumPopulation]
+  measureScore: Quantity
+}
+
+type MeasureReportGroupStratifierStratumComponent {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  code: CodeableConcept!
+  value: CodeableConcept!
+}
+
+type MeasureReportGroupStratifierStratumPopulation {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  code: CodeableConcept
+  count: Int  _count: ElementBase
+  subjectResults: Reference
+}
+
+input MeasureReportInput {
+  id: ID
+  meta: MetaInput
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  status: code  _status: ElementBase
+  type: code  _type: ElementBase
+  measure: canonical  _measure: ElementBase
+  subject: ReferenceInput
+  date: dateTime  _date: ElementBase
+  reporter: ReferenceInput
+  period: PeriodInput!
+  improvementNotation: CodeableConceptInput
+  group: [MeasureReportGroupInput]
+  evaluatedResource: [ReferenceInput]
+}
+
+input MeasureReportGroupInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: CodeableConceptInput
+  population: [MeasureReportGroupPopulationInput]
+  measureScore: QuantityInput
+  stratifier: [MeasureReportGroupStratifierInput]
+}
+
+input MeasureReportGroupPopulationInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: CodeableConceptInput
+  count: Int  _count: ElementBase
+  subjectResults: ReferenceInput
+}
+
+input MeasureReportGroupStratifierInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: [CodeableConceptInput]
+  stratum: [MeasureReportGroupStratifierStratumInput]
+}
+
+input MeasureReportGroupStratifierStratumInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  value: CodeableConceptInput
+  component: [MeasureReportGroupStratifierStratumComponentInput]
+  population: [MeasureReportGroupStratifierStratumPopulationInput]
+  measureScore: QuantityInput
+}
+
+input MeasureReportGroupStratifierStratumComponentInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: CodeableConceptInput!
+  value: CodeableConceptInput!
+}
+
+input MeasureReportGroupStratifierStratumPopulationInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: CodeableConceptInput
+  count: Int  _count: ElementBase
+  subjectResults: ReferenceInput
+}
+
+type MeasureReportReadType {
+  MeasureReport(id: ID!): MeasureReport
+}
+
+type MeasureReportListType {
+  MeasureReportList(_filter: String
+    date: [date]
+    evaluated_resource: [reference]
+    identifier: [token]
+    measure: [reference]
+    patient: [reference]
+    period: [date]
+    reporter: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [MeasureReport]
+}
+
+type MeasureReportConnectionType {
+  MeasureReportConection(_filter: String
+    date: [date]
+    evaluated_resource: [reference]
+    identifier: [token]
+    measure: [reference]
+    patient: [reference]
+    period: [date]
+    reporter: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): MeasureReportConnection
+}
+
+type MeasureReportConnection {
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [MeasureReportEdge]
+}
+
+type MeasureReportEdge {
+  mode: String
+  score: Float
+  resource: MeasureReport
+}
+
+type MeasureReportCreateType {
+  MeasureReportCreate(resource: MeasureReportInput): MeasureReportCreation
+}
+
+type MeasureReportCreation {
+  location: String
+  resource: MeasureReport
+  information: OperationOutcome
+}
+
+type MeasureReportUpdateType {
+  MeasureReportUpdate(id: ID, resource: MeasureReportInput): MeasureReportUpdate
+}
+
+type MeasureReportUpdate {
+  resource: MeasureReport
+  information: OperationOutcome
+}
+
+type MeasureReportDeleteType {
+  MeasureReportDelete(id: ID): MeasureReportDelete
+}
+
+type MeasureReportDelete {
+  information: OperationOutcome
+}
+
