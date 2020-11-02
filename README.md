@@ -16,6 +16,10 @@ FHIR Resources are logicially organized into 3 main subgroups.
 - `primitive`: Custom primitives for FHIR resources.
 - `schema`: TBD 
 
+## Installation - Step by Step
+
+TBD
+
 ## Schema-first apporach
 
 We decided to follow a Schema-First apporach to design our GraphQL architecture.
