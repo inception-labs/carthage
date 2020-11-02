@@ -1,0 +1,38 @@
+# FHIR GraphQL Schema. Version 4.5.0
+
+# FHIR Defined Primitive types
+scalar base64Binary # JSON Format: ??
+# Type boolean: use GraphQL Scalar type Boolean
+scalar canonical # JSON Format: ??
+scalar code # JSON Format: ??
+scalar date # JSON Format: ??
+scalar dateTime # JSON Format: ??
+scalar decimal # JSON Format: ??
+# Type id: use GraphQL Scalar type ID
+scalar instant # JSON Format: ??
+# Type integer: use GraphQL Scalar type Int
+scalar integer64 # JSON Format: ??
+scalar markdown # JSON Format: ??
+scalar oid # JSON Format: ??
+scalar positiveInt # JSON Format: ??
+# Type string: use GraphQL Scalar type String
+scalar time # JSON Format: ??
+scalar unsignedInt # JSON Format: ??
+scalar uri # JSON Format: ??
+scalar url # JSON Format: ??
+scalar uuid # JSON Format: ??
+scalar xhtml # JSON Format: ??
+
+# FHIR Defined Search Parameter Types
+scalar number # JSON Format: String
+# scalar date # JSON Format: String
+# Search Param string: use GraphQL scalar type String
+scalar token # JSON Format: String
+scalar reference # JSON Format: String
+scalar composite # JSON Format: String
+scalar quantity # JSON Format: String
+# scalar uri # JSON Format: String
+scalar special # JSON Format: String
+
+scalar Resource # JSON Format: String
+scalar ResourceInput # JSON Format: String

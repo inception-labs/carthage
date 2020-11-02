@@ -24,15 +24,15 @@ scalar uuid # JSON Format: ??
 scalar xhtml # JSON Format: ??
 
 # FHIR Defined Search Parameter Types
-Scalar number # JSON Format: String
-Scalar date # JSON Format: String
-# Search Param string: use GraphQL Scalar type String
-Scalar token # JSON Format: String
-Scalar reference # JSON Format: String
-Scalar composite # JSON Format: String
-Scalar quantity # JSON Format: String
-Scalar uri # JSON Format: String
-Scalar special # JSON Format: String
+scalar number # JSON Format: String
+# scalar date # JSON Format: String
+# Search Param string: use GraphQL scalar type String
+scalar token # JSON Format: String
+scalar reference # JSON Format: String
+scalar composite # JSON Format: String
+scalar quantity # JSON Format: String
+# scalar uri # JSON Format: String
+scalar special # JSON Format: String
 
 type ElementBase {
   id: ID
