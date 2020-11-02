@@ -1,0 +1,43 @@
+# FHIR GraphQL Schema. Version 4.5.0
+
+# import the types from 'types.graphql'
+
+
+input AccountInput {
+  id: ID
+  meta: MetaInput
+  implicitRules: uri  _implicitRules: ElementBaseInput
+  language: code  _language: ElementBaseInput
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  status: code  _status: ElementBaseInput
+  type: CodeableConceptInput
+  name: String  _name: ElementBaseInput
+  subject: [ReferenceInput]
+  servicePeriod: PeriodInput
+  coverage: [AccountCoverageInput]
+  owner: ReferenceInput
+  description: String  _description: ElementBaseInput
+  guarantor: [AccountGuarantorInput]
+  partOf: ReferenceInput
+}
+
+input AccountCoverageInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  coverage: ReferenceInput!
+  priority: positiveInt  _priority: ElementBaseInput
+}
+
+input AccountGuarantorInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  party: ReferenceInput!
+  onHold: Boolean  _onHold: ElementBaseInput
+  period: PeriodInput
+}

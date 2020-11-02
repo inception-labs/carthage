@@ -1,0 +1,929 @@
+# FHIR GraphQL Schema. Version 4.5.0
+
+
+input ElementBaseInput {
+  id: ID
+  extension: [ExtensionInput]
+}
+
+input AddressInput {
+  id: String
+  extension: [ExtensionInput]
+  use: code  _use: ElementBaseInput
+  type: code  _type: ElementBaseInput
+  text: String  _text: ElementBaseInput
+  line: String  _line: [ElementBaseInput]
+  city: String  _city: ElementBaseInput
+  district: String  _district: ElementBaseInput
+  state: String  _state: ElementBaseInput
+  postalCode: String  _postalCode: ElementBaseInput
+  country: String  _country: ElementBaseInput
+  period: PeriodInput
+}
+
+input AgeInput {
+  id: String
+  extension: [ExtensionInput]
+  value: decimal  _value: ElementBaseInput
+  comparator: code  _comparator: ElementBaseInput
+  unit: String  _unit: ElementBaseInput
+  system: uri  _system: ElementBaseInput
+  code: code  _code: ElementBaseInput
+}
+
+input AnnotationInput {
+  id: String
+  extension: [ExtensionInput]
+  authorReference: ReferenceInput
+  authorString: String  _authorString: ElementBaseInput
+  time: dateTime  _time: ElementBaseInput
+  text: markdown  _text: ElementBaseInput
+}
+
+input AttachmentInput {
+  id: String
+  extension: [ExtensionInput]
+  contentType: code  _contentType: ElementBaseInput
+  language: code  _language: ElementBaseInput
+  data: base64Binary  _data: ElementBaseInput
+  url: url  _url: ElementBaseInput
+  size: integer64  _size: ElementBaseInput
+  hash: base64Binary  _hash: ElementBaseInput
+  title: String  _title: ElementBaseInput
+  creation: dateTime  _creation: ElementBaseInput
+  height: positiveInt  _height: ElementBaseInput
+  width: positiveInt  _width: ElementBaseInput
+  frames: positiveInt  _frames: ElementBaseInput
+  duration: decimal  _duration: ElementBaseInput
+  pages: positiveInt  _pages: ElementBaseInput
+}
+
+input CodeableConceptInput {
+  id: String
+  extension: [ExtensionInput]
+  coding: [CodingInput]
+  text: String  _text: ElementBaseInput
+}
+
+
+input CodeableReferenceInput {
+  id: String
+  extension: [ExtensionInput]
+  concept: CodeableConceptInput
+  reference: ReferenceInput
+}
+
+input CodingInput {
+  id: String
+  extension: [ExtensionInput]
+  system: uri  _system: ElementBaseInput
+  version: String  _version: ElementBaseInput
+  code: code  _code: ElementBaseInput
+  display: String  _display: ElementBaseInput
+  userSelected: Boolean  _userSelected: ElementBaseInput
+}
+
+input ContactDetailInput {
+  id: String
+  extension: [ExtensionInput]
+  name: String  _name: ElementBaseInput
+  telecom: [ContactPointInput]
+}
+
+
+input ContactPointInput {
+  id: String
+  extension: [ExtensionInput]
+  system: code  _system: ElementBaseInput
+  value: String  _value: ElementBaseInput
+  use: code  _use: ElementBaseInput
+  rank: positiveInt  _rank: ElementBaseInput
+  period: PeriodInput
+}
+
+input ContributorInput {
+  id: String
+  extension: [ExtensionInput]
+  type: code  _type: ElementBaseInput
+  name: String  _name: ElementBaseInput
+  contact: [ContactDetailInput]
+}
+
+input CountInput {
+  id: String
+  extension: [ExtensionInput]
+  value: decimal  _value: ElementBaseInput
+  comparator: code  _comparator: ElementBaseInput
+  unit: String  _unit: ElementBaseInput
+  system: uri  _system: ElementBaseInput
+  code: code  _code: ElementBaseInput
+}
+
+input DataRequirementInput {
+  id: String
+  extension: [ExtensionInput]
+  type: code  _type: ElementBaseInput
+  profile: canonical  _profile: [ElementBaseInput]
+  subjectCodeableConcept: CodeableConceptInput
+  subjectReference: ReferenceInput
+  mustSupport: String  _mustSupport: [ElementBaseInput]
+  codeFilter: [DataRequirementCodeFilterInput]
+  dateFilter: [DataRequirementDateFilterInput]
+  limit: positiveInt  _limit: ElementBaseInput
+  sort: [DataRequirementSortInput]
+}
+
+input DataRequirementCodeFilterInput {
+  id: String
+  extension: [ExtensionInput]
+  path: String  _path: ElementBaseInput
+  searchParam: String  _searchParam: ElementBaseInput
+  valueSet: canonical  _valueSet: ElementBaseInput
+  code: [CodingInput]
+}
+
+input DataRequirementDateFilterInput {
+  id: String
+  extension: [ExtensionInput]
+  path: String  _path: ElementBaseInput
+  searchParam: String  _searchParam: ElementBaseInput
+  valueDateTime: dateTime  _valueDateTime: ElementBaseInput
+  valuePeriod: PeriodInput
+  valueDuration: DurationInput
+}
+
+input DataRequirementSortInput {
+  id: String
+  extension: [ExtensionInput]
+  path: String  _path: ElementBaseInput
+  direction: code  _direction: ElementBaseInput
+}
+
+input DistanceInput {
+  id: String
+  extension: [ExtensionInput]
+  value: decimal  _value: ElementBaseInput
+  comparator: code  _comparator: ElementBaseInput
+  unit: String  _unit: ElementBaseInput
+  system: uri  _system: ElementBaseInput
+  code: code  _code: ElementBaseInput
+}
+
+input DosageInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  sequence: Int  _sequence: ElementBaseInput
+  text: String  _text: ElementBaseInput
+  additionalInstruction: [CodeableConceptInput]
+  patientInstruction: String  _patientInstruction: ElementBaseInput
+  timing: TimingInput
+  asNeededBoolean: Boolean  _asNeededBoolean: ElementBaseInput
+  asNeededCodeableConcept: CodeableConceptInput
+  site: CodeableConceptInput
+  route: CodeableConceptInput
+  method: CodeableConceptInput
+  doseAndRate: [DosageDoseAndRateInput]
+  maxDosePerPeriod: RatioInput
+  maxDosePerAdministration: QuantityInput
+  maxDosePerLifetime: QuantityInput
+}
+
+input DosageDoseAndRateInput {
+  id: String
+  extension: [ExtensionInput]
+  type: CodeableConceptInput
+  doseRange: RangeInput
+  doseQuantity: QuantityInput
+  rateRatio: RatioInput
+  rateRange: RangeInput
+  rateQuantity: QuantityInput
+}
+
+input DurationInput {
+  id: String
+  extension: [ExtensionInput]
+  value: decimal  _value: ElementBaseInput
+  comparator: code  _comparator: ElementBaseInput
+  unit: String  _unit: ElementBaseInput
+  system: uri  _system: ElementBaseInput
+  code: code  _code: ElementBaseInput
+}
+
+input ElementDefinitionInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  path: String  _path: ElementBaseInput
+  representation: code  _representation: [ElementBaseInput]
+  sliceName: String  _sliceName: ElementBaseInput
+  sliceIsConstraining: Boolean  _sliceIsConstraining: ElementBaseInput
+  label: String  _label: ElementBaseInput
+  code: [CodingInput]
+  slicing: ElementDefinitionSlicingInput
+  short: String  _short: ElementBaseInput
+  definition: markdown  _definition: ElementBaseInput
+  comment: markdown  _comment: ElementBaseInput
+  requirements: markdown  _requirements: ElementBaseInput
+  alias: String  _alias: [ElementBaseInput]
+  min: unsignedInt  _min: ElementBaseInput
+  max: String  _max: ElementBaseInput
+  base: ElementDefinitionBaseInput
+  contentReference: uri  _contentReference: ElementBaseInput
+  type: [ElementDefinitionTypeInput]
+  defaultValueBase64Binary: base64Binary  _defaultValueBase64Binary: ElementBaseInput
+  defaultValueBoolean: Boolean  _defaultValueBoolean: ElementBaseInput
+  defaultValueCanonical: canonical  _defaultValueCanonical: ElementBaseInput
+  defaultValueCode: code  _defaultValueCode: ElementBaseInput
+  defaultValueDate: date  _defaultValueDate: ElementBaseInput
+  defaultValueDateTime: dateTime  _defaultValueDateTime: ElementBaseInput
+  defaultValueDecimal: decimal  _defaultValueDecimal: ElementBaseInput
+  defaultValueId: ID  _defaultValueId: ElementBaseInput
+  defaultValueInstant: instant  _defaultValueInstant: ElementBaseInput
+  defaultValueInteger: Int  _defaultValueInteger: ElementBaseInput
+  defaultValueInteger64: integer64  _defaultValueInteger64: ElementBaseInput
+  defaultValueMarkdown: markdown  _defaultValueMarkdown: ElementBaseInput
+  defaultValueOid: oid  _defaultValueOid: ElementBaseInput
+  defaultValuePositiveInt: positiveInt  _defaultValuePositiveInt: ElementBaseInput
+  defaultValueString: String  _defaultValueString: ElementBaseInput
+  defaultValueTime: time  _defaultValueTime: ElementBaseInput
+  defaultValueUnsignedInt: unsignedInt  _defaultValueUnsignedInt: ElementBaseInput
+  defaultValueUri: uri  _defaultValueUri: ElementBaseInput
+  defaultValueUrl: url  _defaultValueUrl: ElementBaseInput
+  defaultValueUuid: uuid  _defaultValueUuid: ElementBaseInput
+  defaultValueAddress: AddressInput
+  defaultValueAge: AgeInput
+  defaultValueAnnotation: AnnotationInput
+  defaultValueAttachment: AttachmentInput
+  defaultValueCodeableConcept: CodeableConceptInput
+  defaultValueCoding: CodingInput
+  defaultValueContactPoint: ContactPointInput
+  defaultValueCount: CountInput
+  defaultValueDistance: DistanceInput
+  defaultValueDuration: DurationInput
+  defaultValueHumanName: HumanNameInput
+  defaultValueIdentifier: IdentifierInput
+  defaultValueMoney: MoneyInput
+  defaultValuePeriod: PeriodInput
+  defaultValueQuantity: QuantityInput
+  defaultValueRange: RangeInput
+  defaultValueRatio: RatioInput
+  defaultValueSampledData: SampledDataInput
+  defaultValueSignature: SignatureInput
+  defaultValueTiming: TimingInput
+  defaultValueContactDetail: ContactDetailInput
+  defaultValueContributor: ContributorInput
+  defaultValueDataRequirement: DataRequirementInput
+  defaultValueExpression: ExpressionInput
+  defaultValueParameterDefinition: ParameterDefinitionInput
+  defaultValueRelatedArtifact: RelatedArtifactInput
+  defaultValueTriggerDefinition: TriggerDefinitionInput
+  defaultValueUsageContext: UsageContextInput
+  defaultValueDosage: DosageInput
+  defaultValueMeta: MetaInput
+  meaningWhenMissing: markdown  _meaningWhenMissing: ElementBaseInput
+  orderMeaning: String  _orderMeaning: ElementBaseInput
+  fixedBase64Binary: base64Binary  _fixedBase64Binary: ElementBaseInput
+  fixedBoolean: Boolean  _fixedBoolean: ElementBaseInput
+  fixedCanonical: canonical  _fixedCanonical: ElementBaseInput
+  fixedCode: code  _fixedCode: ElementBaseInput
+  fixedDate: date  _fixedDate: ElementBaseInput
+  fixedDateTime: dateTime  _fixedDateTime: ElementBaseInput
+  fixedDecimal: decimal  _fixedDecimal: ElementBaseInput
+  fixedId: ID  _fixedId: ElementBaseInput
+  fixedInstant: instant  _fixedInstant: ElementBaseInput
+  fixedInteger: Int  _fixedInteger: ElementBaseInput
+  fixedInteger64: integer64  _fixedInteger64: ElementBaseInput
+  fixedMarkdown: markdown  _fixedMarkdown: ElementBaseInput
+  fixedOid: oid  _fixedOid: ElementBaseInput
+  fixedPositiveInt: positiveInt  _fixedPositiveInt: ElementBaseInput
+  fixedString: String  _fixedString: ElementBaseInput
+  fixedTime: time  _fixedTime: ElementBaseInput
+  fixedUnsignedInt: unsignedInt  _fixedUnsignedInt: ElementBaseInput
+  fixedUri: uri  _fixedUri: ElementBaseInput
+  fixedUrl: url  _fixedUrl: ElementBaseInput
+  fixedUuid: uuid  _fixedUuid: ElementBaseInput
+  fixedAddress: AddressInput
+  fixedAge: AgeInput
+  fixedAnnotation: AnnotationInput
+  fixedAttachment: AttachmentInput
+  fixedCodeableConcept: CodeableConceptInput
+  fixedCoding: CodingInput
+  fixedContactPoint: ContactPointInput
+  fixedCount: CountInput
+  fixedDistance: DistanceInput
+  fixedDuration: DurationInput
+  fixedHumanName: HumanNameInput
+  fixedIdentifier: IdentifierInput
+  fixedMoney: MoneyInput
+  fixedPeriod: PeriodInput
+  fixedQuantity: QuantityInput
+  fixedRange: RangeInput
+  fixedRatio: RatioInput
+  fixedSampledData: SampledDataInput
+  fixedSignature: SignatureInput
+  fixedTiming: TimingInput
+  fixedContactDetail: ContactDetailInput
+  fixedContributor: ContributorInput
+  fixedDataRequirement: DataRequirementInput
+  fixedExpression: ExpressionInput
+  fixedParameterDefinition: ParameterDefinitionInput
+  fixedRelatedArtifact: RelatedArtifactInput
+  fixedTriggerDefinition: TriggerDefinitionInput
+  fixedUsageContext: UsageContextInput
+  fixedDosage: DosageInput
+  fixedMeta: MetaInput
+  patternBase64Binary: base64Binary  _patternBase64Binary: ElementBaseInput
+  patternBoolean: Boolean  _patternBoolean: ElementBaseInput
+  patternCanonical: canonical  _patternCanonical: ElementBaseInput
+  patternCode: code  _patternCode: ElementBaseInput
+  patternDate: date  _patternDate: ElementBaseInput
+  patternDateTime: dateTime  _patternDateTime: ElementBaseInput
+  patternDecimal: decimal  _patternDecimal: ElementBaseInput
+  patternId: ID  _patternId: ElementBaseInput
+  patternInstant: instant  _patternInstant: ElementBaseInput
+  patternInteger: Int  _patternInteger: ElementBaseInput
+  patternInteger64: integer64  _patternInteger64: ElementBaseInput
+  patternMarkdown: markdown  _patternMarkdown: ElementBaseInput
+  patternOid: oid  _patternOid: ElementBaseInput
+  patternPositiveInt: positiveInt  _patternPositiveInt: ElementBaseInput
+  patternString: String  _patternString: ElementBaseInput
+  patternTime: time  _patternTime: ElementBaseInput
+  patternUnsignedInt: unsignedInt  _patternUnsignedInt: ElementBaseInput
+  patternUri: uri  _patternUri: ElementBaseInput
+  patternUrl: url  _patternUrl: ElementBaseInput
+  patternUuid: uuid  _patternUuid: ElementBaseInput
+  patternAddress: AddressInput
+  patternAge: AgeInput
+  patternAnnotation: AnnotationInput
+  patternAttachment: AttachmentInput
+  patternCodeableConcept: CodeableConceptInput
+  patternCoding: CodingInput
+  patternContactPoint: ContactPointInput
+  patternCount: CountInput
+  patternDistance: DistanceInput
+  patternDuration: DurationInput
+  patternHumanName: HumanNameInput
+  patternIdentifier: IdentifierInput
+  patternMoney: MoneyInput
+  patternPeriod: PeriodInput
+  patternQuantity: QuantityInput
+  patternRange: RangeInput
+  patternRatio: RatioInput
+  patternSampledData: SampledDataInput
+  patternSignature: SignatureInput
+  patternTiming: TimingInput
+  patternContactDetail: ContactDetailInput
+  patternContributor: ContributorInput
+  patternDataRequirement: DataRequirementInput
+  patternExpression: ExpressionInput
+  patternParameterDefinition: ParameterDefinitionInput
+  patternRelatedArtifact: RelatedArtifactInput
+  patternTriggerDefinition: TriggerDefinitionInput
+  patternUsageContext: UsageContextInput
+  patternDosage: DosageInput
+  patternMeta: MetaInput
+  example: [ElementDefinitionExampleInput]
+  minValueDate: date  _minValueDate: ElementBaseInput
+  minValueDateTime: dateTime  _minValueDateTime: ElementBaseInput
+  minValueInstant: instant  _minValueInstant: ElementBaseInput
+  minValueTime: time  _minValueTime: ElementBaseInput
+  minValueDecimal: decimal  _minValueDecimal: ElementBaseInput
+  minValueInteger: Int  _minValueInteger: ElementBaseInput
+  minValueInteger64: integer64  _minValueInteger64: ElementBaseInput
+  minValuePositiveInt: positiveInt  _minValuePositiveInt: ElementBaseInput
+  minValueUnsignedInt: unsignedInt  _minValueUnsignedInt: ElementBaseInput
+  minValueQuantity: QuantityInput
+  maxValueDate: date  _maxValueDate: ElementBaseInput
+  maxValueDateTime: dateTime  _maxValueDateTime: ElementBaseInput
+  maxValueInstant: instant  _maxValueInstant: ElementBaseInput
+  maxValueTime: time  _maxValueTime: ElementBaseInput
+  maxValueDecimal: decimal  _maxValueDecimal: ElementBaseInput
+  maxValueInteger: Int  _maxValueInteger: ElementBaseInput
+  maxValueInteger64: integer64  _maxValueInteger64: ElementBaseInput
+  maxValuePositiveInt: positiveInt  _maxValuePositiveInt: ElementBaseInput
+  maxValueUnsignedInt: unsignedInt  _maxValueUnsignedInt: ElementBaseInput
+  maxValueQuantity: QuantityInput
+  maxLength: Int  _maxLength: ElementBaseInput
+  condition: ID  _condition: [ElementBaseInput]
+  constraint: [ElementDefinitionConstraintInput]
+  mustSupport: Boolean  _mustSupport: ElementBaseInput
+  isModifier: Boolean  _isModifier: ElementBaseInput
+  isModifierReason: String  _isModifierReason: ElementBaseInput
+  isSummary: Boolean  _isSummary: ElementBaseInput
+  binding: ElementDefinitionBindingInput
+  mapping: [ElementDefinitionMappingInput]
+}
+
+input ElementDefinitionSlicingInput {
+  id: String
+  extension: [ExtensionInput]
+  discriminator: [ElementDefinitionSlicingDiscriminatorInput]
+  description: String  _description: ElementBaseInput
+  ordered: Boolean  _ordered: ElementBaseInput
+  rules: code  _rules: ElementBaseInput
+}
+
+input ElementDefinitionSlicingDiscriminatorInput {
+  id: String
+  extension: [ExtensionInput]
+  type: code  _type: ElementBaseInput
+  path: String  _path: ElementBaseInput
+}
+
+input ElementDefinitionBaseInput {
+  id: String
+  extension: [ExtensionInput]
+  path: String  _path: ElementBaseInput
+  min: unsignedInt  _min: ElementBaseInput
+  max: String  _max: ElementBaseInput
+}
+
+input ElementDefinitionTypeInput {
+  id: String
+  extension: [ExtensionInput]
+  code: uri  _code: ElementBaseInput
+  profile: canonical  _profile: [ElementBaseInput]
+  targetProfile: canonical  _targetProfile: [ElementBaseInput]
+  aggregation: code  _aggregation: [ElementBaseInput]
+  versioning: code  _versioning: ElementBaseInput
+}
+
+input ElementDefinitionExampleInput {
+  id: String
+  extension: [ExtensionInput]
+  label: String  _label: ElementBaseInput
+  valueBase64Binary: base64Binary  _valueBase64Binary: ElementBaseInput
+  valueBoolean: Boolean  _valueBoolean: ElementBaseInput
+  valueCanonical: canonical  _valueCanonical: ElementBaseInput
+  valueCode: code  _valueCode: ElementBaseInput
+  valueDate: date  _valueDate: ElementBaseInput
+  valueDateTime: dateTime  _valueDateTime: ElementBaseInput
+  valueDecimal: decimal  _valueDecimal: ElementBaseInput
+  valueId: ID  _valueId: ElementBaseInput
+  valueInstant: instant  _valueInstant: ElementBaseInput
+  valueInteger: Int  _valueInteger: ElementBaseInput
+  valueInteger64: integer64  _valueInteger64: ElementBaseInput
+  valueMarkdown: markdown  _valueMarkdown: ElementBaseInput
+  valueOid: oid  _valueOid: ElementBaseInput
+  valuePositiveInt: positiveInt  _valuePositiveInt: ElementBaseInput
+  valueString: String  _valueString: ElementBaseInput
+  valueTime: time  _valueTime: ElementBaseInput
+  valueUnsignedInt: unsignedInt  _valueUnsignedInt: ElementBaseInput
+  valueUri: uri  _valueUri: ElementBaseInput
+  valueUrl: url  _valueUrl: ElementBaseInput
+  valueUuid: uuid  _valueUuid: ElementBaseInput
+  valueAddress: AddressInput
+  valueAge: AgeInput
+  valueAnnotation: AnnotationInput
+  valueAttachment: AttachmentInput
+  valueCodeableConcept: CodeableConceptInput
+  valueCoding: CodingInput
+  valueContactPoint: ContactPointInput
+  valueCount: CountInput
+  valueDistance: DistanceInput
+  valueDuration: DurationInput
+  valueHumanName: HumanNameInput
+  valueIdentifier: IdentifierInput
+  valueMoney: MoneyInput
+  valuePeriod: PeriodInput
+  valueQuantity: QuantityInput
+  valueRange: RangeInput
+  valueRatio: RatioInput
+  valueSampledData: SampledDataInput
+  valueSignature: SignatureInput
+  valueTiming: TimingInput
+  valueContactDetail: ContactDetailInput
+  valueContributor: ContributorInput
+  valueDataRequirement: DataRequirementInput
+  valueExpression: ExpressionInput
+  valueParameterDefinition: ParameterDefinitionInput
+  valueRelatedArtifact: RelatedArtifactInput
+  valueTriggerDefinition: TriggerDefinitionInput
+  valueUsageContext: UsageContextInput
+  valueDosage: DosageInput
+  valueMeta: MetaInput
+}
+
+input ElementDefinitionConstraintInput {
+  id: String
+  extension: [ExtensionInput]
+  key: ID  _key: ElementBaseInput
+  requirements: String  _requirements: ElementBaseInput
+  severity: code  _severity: ElementBaseInput
+  human: String  _human: ElementBaseInput
+  expression: String  _expression: ElementBaseInput
+  xpath: String  _xpath: ElementBaseInput
+  source: canonical  _source: ElementBaseInput
+}
+
+input ElementDefinitionBindingInput {
+  id: String
+  extension: [ExtensionInput]
+  strength: code  _strength: ElementBaseInput
+  description: String  _description: ElementBaseInput
+  valueSet: canonical  _valueSet: ElementBaseInput
+}
+
+input ElementDefinitionMappingInput {
+  id: String
+  extension: [ExtensionInput]
+  identity: ID  _identity: ElementBaseInput
+  language: code  _language: ElementBaseInput
+  map: String  _map: ElementBaseInput
+  comment: String  _comment: ElementBaseInput
+}
+
+input ExpressionInput {
+  id: String
+  extension: [ExtensionInput]
+  description: String  _description: ElementBaseInput
+  name: ID  _name: ElementBaseInput
+  language: code  _language: ElementBaseInput
+  expression: String  _expression: ElementBaseInput
+  reference: uri  _reference: ElementBaseInput
+}
+
+input ExtensionInput {
+  id: String
+  extension: [ExtensionInput]
+  url: uri  _url: ElementBaseInput
+  valueBase64Binary: base64Binary  _valueBase64Binary: ElementBaseInput
+  valueBoolean: Boolean  _valueBoolean: ElementBaseInput
+  valueCanonical: canonical  _valueCanonical: ElementBaseInput
+  valueCode: code  _valueCode: ElementBaseInput
+  valueDate: date  _valueDate: ElementBaseInput
+  valueDateTime: dateTime  _valueDateTime: ElementBaseInput
+  valueDecimal: decimal  _valueDecimal: ElementBaseInput
+  valueId: ID  _valueId: ElementBaseInput
+  valueInstant: instant  _valueInstant: ElementBaseInput
+  valueInteger: Int  _valueInteger: ElementBaseInput
+  valueInteger64: integer64  _valueInteger64: ElementBaseInput
+  valueMarkdown: markdown  _valueMarkdown: ElementBaseInput
+  valueOid: oid  _valueOid: ElementBaseInput
+  valuePositiveInt: positiveInt  _valuePositiveInt: ElementBaseInput
+  valueString: String  _valueString: ElementBaseInput
+  valueTime: time  _valueTime: ElementBaseInput
+  valueUnsignedInt: unsignedInt  _valueUnsignedInt: ElementBaseInput
+  valueUri: uri  _valueUri: ElementBaseInput
+  valueUrl: url  _valueUrl: ElementBaseInput
+  valueUuid: uuid  _valueUuid: ElementBaseInput
+  valueAddress: AddressInput
+  valueAge: AgeInput
+  valueAnnotation: AnnotationInput
+  valueAttachment: AttachmentInput
+  valueCodeableConcept: CodeableConceptInput
+  valueCoding: CodingInput
+  valueContactPoint: ContactPointInput
+  valueCount: CountInput
+  valueDistance: DistanceInput
+  valueDuration: DurationInput
+  valueHumanName: HumanNameInput
+  valueIdentifier: IdentifierInput
+  valueMoney: MoneyInput
+  valuePeriod: PeriodInput
+  valueQuantity: QuantityInput
+  valueRange: RangeInput
+  valueRatio: RatioInput
+  valueSampledData: SampledDataInput
+  valueSignature: SignatureInput
+  valueTiming: TimingInput
+  valueContactDetail: ContactDetailInput
+  valueContributor: ContributorInput
+  valueDataRequirement: DataRequirementInput
+  valueExpression: ExpressionInput
+  valueParameterDefinition: ParameterDefinitionInput
+  valueRelatedArtifact: RelatedArtifactInput
+  valueTriggerDefinition: TriggerDefinitionInput
+  valueUsageContext: UsageContextInput
+  valueDosage: DosageInput
+  valueMeta: MetaInput
+}
+
+input HumanNameInput {
+  id: String
+  extension: [ExtensionInput]
+  use: code  _use: ElementBaseInput
+  text: String  _text: ElementBaseInput
+  family: String  _family: ElementBaseInput
+  given: String  _given: [ElementBaseInput]
+  prefix: String  _prefix: [ElementBaseInput]
+  suffix: String  _suffix: [ElementBaseInput]
+  period: PeriodInput
+}
+
+input IdentifierInput {
+  id: String
+  extension: [ExtensionInput]
+  use: code  _use: ElementBaseInput
+  type: CodeableConceptInput
+  system: uri  _system: ElementBaseInput
+  value: String  _value: ElementBaseInput
+  period: PeriodInput
+  assigner: ReferenceInput
+}
+
+input MarketingStatusInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  country: CodeableConceptInput
+  jurisdiction: CodeableConceptInput
+  status: CodeableConceptInput!
+  dateRange: PeriodInput
+  restoreDate: dateTime  _restoreDate: ElementBaseInput
+}
+
+input MetaInput {
+  id: String
+  extension: [ExtensionInput]
+  versionId: ID  _versionId: ElementBaseInput
+  lastUpdated: instant  _lastUpdated: ElementBaseInput
+  source: uri  _source: ElementBaseInput
+  profile: canonical  _profile: [ElementBaseInput]
+  security: [CodingInput]
+  tag: [CodingInput]
+}
+
+input MoneyInput {
+  id: String
+  extension: [ExtensionInput]
+  value: decimal  _value: ElementBaseInput
+  currency: code  _currency: ElementBaseInput
+}
+
+input NarrativeInput {
+  id: String
+  extension: [ExtensionInput]
+  status: code  _status: ElementBaseInput
+  div: xhtml  _div: ElementBaseInput
+}
+
+input OrderedDistributionInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: String  _description: ElementBaseInput
+  note: [AnnotationInput]
+  numberOfIntervals: Int  _numberOfIntervals: ElementBaseInput
+  bottomOfFirstInterval: QuantityInput
+  interval: [OrderedDistributionIntervalInput]!
+  topOfInterval: QuantityInput
+}
+
+input OrderedDistributionIntervalInput {
+  id: String
+  extension: [ExtensionInput]
+  rankOrder: Int  _rankOrder: ElementBaseInput
+  intervalStatistic: [StatisticInput]
+}
+
+input ParameterDefinitionInput {
+  id: String
+  extension: [ExtensionInput]
+  name: code  _name: ElementBaseInput
+  use: code  _use: ElementBaseInput
+  min: Int  _min: ElementBaseInput
+  max: String  _max: ElementBaseInput
+  documentation: String  _documentation: ElementBaseInput
+  type: code  _type: ElementBaseInput
+  profile: canonical  _profile: ElementBaseInput
+}
+
+input PeriodInput {
+  id: String
+  extension: [ExtensionInput]
+  start: dateTime  _start: ElementBaseInput
+  end: dateTime  _end: ElementBaseInput
+}
+
+input PopulationInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  ageRange: RangeInput
+  ageCodeableConcept: CodeableConceptInput
+  gender: CodeableConceptInput
+  race: CodeableConceptInput
+  physiologicalCondition: CodeableConceptInput
+}
+
+input ProdCharacteristicInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  height: QuantityInput
+  width: QuantityInput
+  depth: QuantityInput
+  weight: QuantityInput
+  nominalVolume: QuantityInput
+  externalDiameter: QuantityInput
+  shape: String  _shape: ElementBaseInput
+  color: String  _color: [ElementBaseInput]
+  imprint: String  _imprint: [ElementBaseInput]
+  image: [AttachmentInput]
+  scoring: CodeableConceptInput
+}
+
+input ProductShelfLifeInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput
+  periodQuantity: QuantityInput
+  periodString: String  _periodString: ElementBaseInput
+  specialPrecautionsForStorage: [CodeableConceptInput]
+}
+
+input QuantityInput {
+  id: String
+  extension: [ExtensionInput]
+  value: decimal  _value: ElementBaseInput
+  comparator: code  _comparator: ElementBaseInput
+  unit: String  _unit: ElementBaseInput
+  system: uri  _system: ElementBaseInput
+  code: code  _code: ElementBaseInput
+}
+
+input RangeInput {
+  id: String
+  extension: [ExtensionInput]
+  low: QuantityInput
+  high: QuantityInput
+}
+
+input RatioInput {
+  id: String
+  extension: [ExtensionInput]
+  numerator: QuantityInput
+  denominator: QuantityInput
+}
+
+input ReferenceInput {
+  id: String
+  extension: [ExtensionInput]
+  reference: String  _reference: ElementBaseInput
+  type: uri  _type: ElementBaseInput
+  identifier: IdentifierInput
+  display: String  _display: ElementBaseInput
+}
+
+input RelatedArtifactInput {
+  id: String
+  extension: [ExtensionInput]
+  type: code  _type: ElementBaseInput
+  label: String  _label: ElementBaseInput
+  display: String  _display: ElementBaseInput
+  citation: markdown  _citation: ElementBaseInput
+  url: url  _url: ElementBaseInput
+  document: AttachmentInput
+  resource: canonical  _resource: ElementBaseInput
+}
+
+input SampledDataInput {
+  id: String
+  extension: [ExtensionInput]
+  origin: QuantityInput!
+  period: decimal  _period: ElementBaseInput
+  factor: decimal  _factor: ElementBaseInput
+  lowerLimit: decimal  _lowerLimit: ElementBaseInput
+  upperLimit: decimal  _upperLimit: ElementBaseInput
+  dimensions: positiveInt  _dimensions: ElementBaseInput
+  data: String  _data: ElementBaseInput
+}
+
+input SignatureInput {
+  id: String
+  extension: [ExtensionInput]
+  type: [CodingInput]!
+  when: instant  _when: ElementBaseInput
+  who: ReferenceInput!
+  onBehalfOf: ReferenceInput
+  targetFormat: code  _targetFormat: ElementBaseInput
+  sigFormat: code  _sigFormat: ElementBaseInput
+  data: base64Binary  _data: ElementBaseInput
+}
+
+
+input StatisticInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: String  _description: ElementBaseInput
+  note: [AnnotationInput]
+  statisticType: CodeableConceptInput
+  quantity: QuantityInput
+  numberOfEvents: Int  _numberOfEvents: ElementBaseInput
+  sampleSize: StatisticSampleSizeInput
+  attributeEstimate: [StatisticAttributeEstimateInput]
+  modelCharacteristic: [StatisticModelCharacteristicInput]
+}
+
+input StatisticSampleSizeInput {
+  id: String
+  extension: [ExtensionInput]
+  description: String  _description: ElementBaseInput
+  note: [AnnotationInput]
+  numberOfStudies: Int  _numberOfStudies: ElementBaseInput
+  numberOfParticipants: Int  _numberOfParticipants: ElementBaseInput
+  knownDataCount: Int  _knownDataCount: ElementBaseInput
+}
+
+input StatisticAttributeEstimateInput {
+  id: String
+  extension: [ExtensionInput]
+  description: String  _description: ElementBaseInput
+  note: [AnnotationInput]
+  type: CodeableConceptInput
+  quantity: QuantityInput
+  level: decimal  _level: ElementBaseInput
+  range: RangeInput
+  attributeEstimate: [StatisticAttributeEstimateAttributeEstimateInput]
+}
+
+input StatisticAttributeEstimateAttributeEstimateInput {
+  id: String
+  extension: [ExtensionInput]
+  description: String  _description: ElementBaseInput
+  note: [AnnotationInput]
+  type: CodeableConceptInput
+  quantity: QuantityInput
+  level: decimal  _level: ElementBaseInput
+  range: RangeInput
+}
+
+input StatisticModelCharacteristicInput {
+  id: String
+  extension: [ExtensionInput]
+  code: CodeableConceptInput
+  valueCodeableConcept: CodeableConceptInput
+  valueBoolean: Boolean  _valueBoolean: ElementBaseInput
+  valueQuantity: QuantityInput
+  valueRange: RangeInput
+  variable: [StatisticModelCharacteristicVariableInput]
+}
+
+input StatisticModelCharacteristicVariableInput {
+  id: String
+  extension: [ExtensionInput]
+  variableDefinition: ReferenceInput!
+  handling: code  _handling: ElementBaseInput
+  valueCategory: [CodeableConceptInput]
+  valueQuantity: [QuantityInput]
+  valueRange: [RangeInput]
+}
+
+input TimingInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  event: dateTime  _event: [ElementBaseInput]
+  repeat: TimingRepeatInput
+  code: CodeableConceptInput
+}
+
+input TimingRepeatInput {
+  id: String
+  extension: [ExtensionInput]
+  boundsDuration: DurationInput
+  boundsRange: RangeInput
+  boundsPeriod: PeriodInput
+  count: positiveInt  _count: ElementBaseInput
+  countMax: positiveInt  _countMax: ElementBaseInput
+  duration: decimal  _duration: ElementBaseInput
+  durationMax: decimal  _durationMax: ElementBaseInput
+  durationUnit: code  _durationUnit: ElementBaseInput
+  frequency: positiveInt  _frequency: ElementBaseInput
+  frequencyMax: positiveInt  _frequencyMax: ElementBaseInput
+  period: decimal  _period: ElementBaseInput
+  periodMax: decimal  _periodMax: ElementBaseInput
+  periodUnit: code  _periodUnit: ElementBaseInput
+  dayOfWeek: code  _dayOfWeek: [ElementBaseInput]
+  timeOfDay: time  _timeOfDay: [ElementBaseInput]
+  when: code  _when: [ElementBaseInput]
+  offset: unsignedInt  _offset: ElementBaseInput
+}
+
+input TriggerDefinitionInput {
+  id: String
+  extension: [ExtensionInput]
+  type: code  _type: ElementBaseInput
+  name: String  _name: ElementBaseInput
+  timingTiming: TimingInput
+  timingReference: ReferenceInput
+  timingDate: date  _timingDate: ElementBaseInput
+  timingDateTime: dateTime  _timingDateTime: ElementBaseInput
+  data: [DataRequirementInput]
+  condition: ExpressionInput
+}
+
+input UsageContextInput {
+  id: String
+  extension: [ExtensionInput]
+  code: CodingInput!
+  valueCodeableConcept: CodeableConceptInput
+  valueQuantity: QuantityInput
+  valueRange: RangeInput
+  valueReference: ReferenceInput
+}
+

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "lib": ["es2018", "esnext.asynciterable"],
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "typeRoots": ["node_modules/@types", "src/@types"],
+  },
+  "files": ["src/@types/graphql.d.ts"],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts", "dist"]
+}

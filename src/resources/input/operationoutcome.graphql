@@ -1,0 +1,28 @@
+# FHIR GraphQL Schema. Version 4.5.0
+
+# import the types from 'types.graphql'
+
+input OperationOutcomeInput {
+  id: ID
+  meta: MetaInput
+  implicitRules: uri  _implicitRules: ElementBaseInput
+  language: code  _language: ElementBaseInput
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  issue: [OperationOutcomeIssueInput]!
+}
+
+input OperationOutcomeIssueInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  severity: code  _severity: ElementBaseInput
+  code: code  _code: ElementBaseInput
+  details: CodeableConceptInput
+  diagnostics: String  _diagnostics: ElementBaseInput
+  location: String  _location: [ElementBaseInput]
+  expression: String  _expression: [ElementBaseInput]
+}
+

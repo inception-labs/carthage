@@ -1,0 +1,150 @@
+# FHIR GraphQL Schema. Version 4.5.0
+
+# import the types from 'types.graphql'
+
+type DeviceUseStatement {
+  id: ID
+  meta: Meta
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: Narrative
+  contained: [Resource]
+  extension: [Extension]
+  modifierExtension: [Extension]
+  identifier: [Identifier]
+  basedOn: [Reference]
+  status: code  _status: ElementBase
+  category: [CodeableConcept]
+  subject: Reference!
+  derivedFrom: [Reference]
+  context: Reference
+  timingTiming: Timing
+  timingPeriod: Period
+  timingDateTime: dateTime  _timingDateTime: ElementBase
+  dateAsserted: dateTime  _dateAsserted: ElementBase
+  usageStatus: CodeableConcept
+  usageReason: [CodeableConcept]
+  informationSource: Reference
+  device: CodeableReference!
+  reason: [CodeableReference]
+  bodySite: CodeableReference
+  note: [Annotation]
+}
+
+input DeviceUseStatementInput {
+  id: ID
+  meta: MetaInput
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  basedOn: [ReferenceInput]
+  status: code  _status: ElementBase
+  category: [CodeableConceptInput]
+  subject: ReferenceInput!
+  derivedFrom: [ReferenceInput]
+  context: ReferenceInput
+  timingTiming: TimingInput
+  timingPeriod: PeriodInput
+  timingDateTime: dateTime  _timingDateTime: ElementBase
+  dateAsserted: dateTime  _dateAsserted: ElementBase
+  usageStatus: CodeableConceptInput
+  usageReason: [CodeableConceptInput]
+  informationSource: ReferenceInput
+  device: CodeableReferenceInput!
+  reason: [CodeableReferenceInput]
+  bodySite: CodeableReferenceInput
+  note: [AnnotationInput]
+}
+
+type DeviceUseStatementReadType {
+  DeviceUseStatement(id: ID!): DeviceUseStatement
+}
+
+type DeviceUseStatementListType {
+  DeviceUseStatementList(_filter: String
+    device: [token]
+    identifier: [token]
+    patient: [reference]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [DeviceUseStatement]
+}
+
+type DeviceUseStatementConnectionType {
+  DeviceUseStatementConection(_filter: String
+    device: [token]
+    identifier: [token]
+    patient: [reference]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): DeviceUseStatementConnection
+}
+
+type DeviceUseStatementConnection {
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [DeviceUseStatementEdge]
+}
+
+type DeviceUseStatementEdge {
+  mode: String
+  score: Float
+  resource: DeviceUseStatement
+}
+
+type DeviceUseStatementCreateType {
+  DeviceUseStatementCreate(resource: DeviceUseStatementInput): DeviceUseStatementCreation
+}
+
+type DeviceUseStatementCreation {
+  location: String
+  resource: DeviceUseStatement
+  information: OperationOutcome
+}
+
+type DeviceUseStatementUpdateType {
+  DeviceUseStatementUpdate(id: ID, resource: DeviceUseStatementInput): DeviceUseStatementUpdate
+}
+
+type DeviceUseStatementUpdate {
+  resource: DeviceUseStatement
+  information: OperationOutcome
+}
+
+type DeviceUseStatementDeleteType {
+  DeviceUseStatementDelete(id: ID): DeviceUseStatementDelete
+}
+
+type DeviceUseStatementDelete {
+  information: OperationOutcome
+}
+

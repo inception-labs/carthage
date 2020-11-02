@@ -1,0 +1,62 @@
+# FHIR GraphQL Schema. Version 4.5.0
+
+# import the types from 'types.graphql'
+
+input PatientInput {
+  id: ID
+  meta: MetaInput
+  implicitRules: uri  _implicitRules: ElementBaseInput
+  language: code  _language: ElementBaseInput
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  active: Boolean  _active: ElementBaseInput
+  name: [HumanNameInput]
+  telecom: [ContactPointInput]
+  gender: code  _gender: ElementBaseInput
+  birthDate: date  _birthDate: ElementBaseInput
+  deceasedBoolean: Boolean  _deceasedBoolean: ElementBaseInput
+  deceasedDateTime: dateTime  _deceasedDateTime: ElementBaseInput
+  address: [AddressInput]
+  maritalStatus: CodeableConceptInput
+  multipleBirthBoolean: Boolean  _multipleBirthBoolean: ElementBaseInput
+  multipleBirthInteger: Int  _multipleBirthInteger: ElementBaseInput
+  photo: [AttachmentInput]
+  contact: [PatientContactInput]
+  communication: [PatientCommunicationInput]
+  generalPractitioner: [ReferenceInput]
+  managingOrganization: ReferenceInput
+  link: [PatientLinkInput]
+}
+
+input PatientContactInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  relationship: [CodeableConceptInput]
+  name: HumanNameInput
+  telecom: [ContactPointInput]
+  address: AddressInput
+  gender: code  _gender: ElementBaseInput
+  organization: ReferenceInput
+  period: PeriodInput
+}
+
+input PatientCommunicationInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  language: CodeableConceptInput!
+  preferred: Boolean  _preferred: ElementBaseInput
+}
+
+input PatientLinkInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  other: ReferenceInput!
+  type: code  _type: ElementBaseInput
+}
+
