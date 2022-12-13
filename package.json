@@ -46,7 +46,7 @@
   "dependencies": {
     "apollo-server-express": "^2.19.0",
     "class-validator": "^0.12.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-graphql": "^0.11.0",
     "graphql": "^15.4.0",
     "graphql-tools": "^7.0.1",
